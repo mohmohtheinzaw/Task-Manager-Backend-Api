@@ -1,0 +1,6 @@
+declare module 'mongojs'
+declare module 'http'
+declare module 'express'
+declare module 'body-parser'
+declare module 'core-js-pure/features/promise'
+declare module 'jsonwebtoken'
