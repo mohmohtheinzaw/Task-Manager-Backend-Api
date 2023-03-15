@@ -29,7 +29,7 @@ class User{
         }
     }
 
-    async delet(){
+    async delete(){
         let queryField = {_id:mongojs.ObjectId(this.userId)}
         try {
             let data = await DatabaseQuery.deleteDocument(config.dbName,userCollection,queryField)

@@ -2,8 +2,11 @@ import http from "http"
 import express from "express"
 import bodyParser from "body-parser"
 import validator from "express-validator"
+import AuthRouter from "./router/AuthRouter"
 import TaskRouter from "./router/TaskRouter"
 import TaskManagerRouter from "./router/TaskManagerRouter"
+import UserRouter from "./router/UserRouter"
+import UserManagerRouter from "./router/UserManagerRouter"
 
 class App {
     httpPort: number = 3000
@@ -43,9 +46,11 @@ class App {
         this.app.use(validator())
 
         //routes
+        this.app.use("/api/auth",AuthRouter)
         this.app.use("/api/task",TaskRouter)
         this.app.use("/api/task-manager",TaskManagerRouter)
-
+        this.app.use("/api/user",UserRouter)
+        this.app.use("/api/user-manager",UserManagerRouter)
     }
 
     startServer() {

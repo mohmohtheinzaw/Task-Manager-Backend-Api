@@ -7,10 +7,11 @@ const http_1 = __importDefault(require("http"));
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_validator_1 = __importDefault(require("express-validator"));
-//import TaskRouter from "../src/router/taskRouter"
-//import TaskManagerRouter from "../src/router/taskManagerRouter"
+const AuthRouter_1 = __importDefault(require("./router/AuthRouter"));
 const TaskRouter_1 = __importDefault(require("./router/TaskRouter"));
 const TaskManagerRouter_1 = __importDefault(require("./router/TaskManagerRouter"));
+const UserRouter_1 = __importDefault(require("./router/UserRouter"));
+const UserManagerRouter_1 = __importDefault(require("./router/UserManagerRouter"));
 class App {
     constructor() {
         this.httpPort = 3000;
@@ -40,8 +41,11 @@ class App {
         this.app.use(body_parser_1.default.urlencoded({ extended: true }));
         this.app.use((0, express_validator_1.default)());
         //routes
+        this.app.use("/api/auth", AuthRouter_1.default);
         this.app.use("/api/task", TaskRouter_1.default);
         this.app.use("/api/task-manager", TaskManagerRouter_1.default);
+        this.app.use("/api/user", UserRouter_1.default);
+        this.app.use("/api/user-manager", UserManagerRouter_1.default);
     }
     startServer() {
         // start listening the http server
